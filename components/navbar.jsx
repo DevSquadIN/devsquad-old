@@ -1,15 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HiArrowRightOnRectangle } from "react-icons/hi2";
+import { HiArrowLeftOnRectangle } from "react-icons/hi2";
 import discord from "../public/images/discord.svg";
 import twitter from "../public/images/twitter.svg";
 import Menu from "./menu";
+import { useSignOut } from "@nhost/nextjs";
+import Login from "./login";
 
-const Navbar = ({ home }) => {
+const Navbar = ({ home, landing }) => {
+  const { signOut } = useSignOut();
   return (
     <nav className="mx-auto flex max-w-5xl items-center justify-between py-6">
       {/* logo */}
-      {/* TODO: user logged in -> lessons page; not logged in: landing page */}
       <Link
         href="/lessons"
         className="font-serif font-bold tracking-wider text-gray-900"
@@ -17,17 +19,20 @@ const Navbar = ({ home }) => {
         nxt100
       </Link>
       {/* logout button */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         <Link href="#">
-          <Image className="h-4 w-7" src={discord} alt="discord" />
+          <Image className="h-5 w-7" src={discord} alt="discord" />
         </Link>
         <Link href="#">
-          <Image className="h-4 w-7" src={twitter} alt="twitter" />
+          <Image className="h-5 w-7" src={twitter} alt="twitter" />
         </Link>
         {home ? (
-          <button>
-            <HiArrowRightOnRectangle className="h-6 w-6" />
+          <button onClick={signOut}>
+            <HiArrowLeftOnRectangle className="h-6 w-6" />
+            <span className="sr-only">Sign Out</span>
           </button>
+        ) : landing ? (
+          <Login />
         ) : (
           <Menu />
         )}

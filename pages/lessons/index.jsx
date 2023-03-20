@@ -2,6 +2,7 @@ import Head from "next/head";
 import Lessons from "../../components/lessons";
 import { getSortedLessonsData } from "../../lib/lessons";
 import Layout from "../../components/layout";
+import withAuth from "@/withAuth";
 
 export async function getStaticProps() {
   const allLessonsData = getSortedLessonsData();
@@ -12,7 +13,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function LessonsHome({ allLessonsData }) {
+function LessonsHome({ allLessonsData }) {
   return (
     <>
       <Layout home>
@@ -24,3 +25,5 @@ export default function LessonsHome({ allLessonsData }) {
     </>
   );
 }
+
+export default withAuth(LessonsHome);

@@ -4,9 +4,11 @@ import { HiBars3, HiXMark } from "react-icons/hi2";
 import { links } from "../utils/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useSignOut } from "@nhost/nextjs";
 
-export default function Dropdown() {
+function Dropdown() {
   const router = useRouter();
+  const { signOut } = useSignOut();
   return (
     <div className="z-20 w-fit text-right">
       <Menu as="div" className="relative flex text-left">
@@ -48,6 +50,15 @@ export default function Dropdown() {
                       )}
                     </Menu.Item>
                   ))}
+                  <div className="my-1.5 border-t border-gray-200"></div>
+                  <div>
+                    <button
+                      onClick={signOut}
+                      className={`group mx-auto flex w-[95%] items-start truncate rounded-md px-2 py-2 text-sm text-red-400 hover:bg-gray-100`}
+                    >
+                      Logout
+                    </button>
+                  </div>
                 </div>
               </Menu.Items>
             </Transition>
@@ -57,3 +68,5 @@ export default function Dropdown() {
     </div>
   );
 }
+
+export default Dropdown;
