@@ -8,15 +8,15 @@ import { useRouter } from "next/router";
 export default function Dropdown() {
   const router = useRouter();
   return (
-    <div className="z-20 text-right w-fit">
+    <div className="z-20 w-fit text-right">
       <Menu as="div" className="relative flex text-left">
         {({ open }) => (
           <>
             <Menu.Button className="focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-opacity-75">
               {!open ? (
-                <HiBars3 className="w-6 h-6" aria-hidden="true" />
+                <HiBars3 className="h-6 w-6" aria-hidden="true" />
               ) : (
-                <HiXMark className="w-6 h-6" aria-hidden="true" />
+                <HiXMark className="h-6 w-6" aria-hidden="true" />
               )}
             </Menu.Button>
             <Transition
@@ -28,20 +28,20 @@ export default function Dropdown() {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white rounded-md shadow-lg top-8 ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <Menu.Items className="absolute right-0 top-8 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div className="px-1 py-1 ">
                   {links.map((item) => (
                     <Menu.Item key={item.id}>
                       {({ active }) => (
                         <Link
                           href={`${item.path}`}
-                          className={`${
-                            active ? "bg-gray-100" : "text-gray-900"
-                          } ${
-                            item.path == router.asPath && "text-blue-400"
+                          className={`${active && "bg-gray-100"} ${
+                            item.path == router.asPath
+                              ? "text-blue-400"
+                              : "text-gray-800"
                           } group mx-auto flex w-[95%] items-start truncate rounded-md px-2 py-2 text-sm`}
                         >
-                          <span className="capitalize truncate">
+                          <span className="truncate capitalize">
                             {item.name}
                           </span>
                         </Link>
