@@ -16,7 +16,7 @@ export const links = [
   { id: "05", name: "react router", path: "/lessons/05-react-router" },
   { id: "06", name: "react query", path: "/lessons/06-react-query" },
   { id: "07", name: "react testing", path: "/lessons/07-react-testing" },
-  { id: "08", name: "react toolkit", path: "/lessons/08-react-toolkit" },
+  { id: "08", name: "redux toolkit", path: "/lessons/08-redux-toolkit" },
   { id: "09", name: "practical react", path: "/lessons/09-practical-react" },
   { id: "10", name: "nextJS", path: "/lessons/10-nextjs" },
 ];
@@ -30,7 +30,7 @@ export const completion_status = {
   "05-react-router": false,
   "06-react-query": false,
   "07-react-testing": false,
-  "08-react-toolkit": false,
+  "08-redux-toolkit": false,
   "09-practical-react": false,
   "10-nextjs": false,
 };
