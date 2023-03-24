@@ -2,8 +2,8 @@
 
 ## Meta Platform
 
-> This is a platform build using freely available resources to help you learn better.
+> Use YouTube to learn ReactJS framework with additional resources that the platform provides so that you can accelerate your learning.
 
-## How we do it?
+## Still developing
 
-> nxt100 uses tested learning methodologies like recall, spaced-repetition to help you avoid the proverbial `tutorial-hell`.
+nxt100 is still in the primary stages of development. **Watch this section to get the latest updates**
