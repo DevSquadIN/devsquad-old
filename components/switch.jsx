@@ -1,16 +1,42 @@
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
 import { useRouter } from "next/router";
+import { gql, useMutation } from "@apollo/client";
 
-//https://stackoverflow.com/questions/55342406/updating-and-merging-state-object-using-react-usestate-hook
-
-export default function Toggle() {
-  const router = useRouter();
-  const page = router.asPath;
-  const [enabled, setEnabled] = useState(false);
-  function updateStatus() {
-    setEnabled(!enabled);
+const UPDATE_COMPLETION_STATUS_MUTATION = gql`
+  mutation UpdateCompletionStatus(
+    $user_id: uuid
+    $local_id: Int
+    $completion_status: Int
+  ) {
+    update_user_lesson_status(
+      where: { local_lesson_id: { _eq: $local_id }, user_id: { _eq: $user_id } }
+      _set: { completion_status: $completion_status }
+    ) {
+      returning {
+        completion_status
+      }
+    }
   }
+`;
+
+export default function Toggle({ isComplete, user_id, local_id }) {
+  const [updateCompletionStatusMutation] = useMutation(
+    UPDATE_COMPLETION_STATUS_MUTATION
+  );
+
+  const [enabled, setEnabled] = useState(isComplete);
+
+  // todo: useState provides previous value -> tried passing the setState call to useEffect but it starts an infinite render. Functional call inside setState also doesn't solve the issue
+  const updateStatus = async () => {
+    setEnabled((enabled) => !enabled);
+    try {
+      await updateCompletionStatusMutation({
+        variables: { local_id, completion_status: +enabled, user_id },
+      });
+    } catch (error) {}
+  };
+
   return (
     <>
       <Switch
