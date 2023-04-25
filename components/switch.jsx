@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
-import { useRouter } from "next/router";
 import { gql, useMutation } from "@apollo/client";
 
 const UPDATE_COMPLETION_STATUS_MUTATION = gql`
@@ -27,12 +26,11 @@ export default function Toggle({ isComplete, user_id, local_id }) {
 
   const [enabled, setEnabled] = useState(isComplete);
 
-  // todo: useState provides previous value -> tried passing the setState call to useEffect but it starts an infinite render. Functional call inside setState also doesn't solve the issue
   const updateStatus = async () => {
     setEnabled((enabled) => !enabled);
     try {
       await updateCompletionStatusMutation({
-        variables: { local_id, completion_status: +enabled, user_id },
+        variables: { local_id, completion_status: +!enabled, user_id },
       });
     } catch (error) {}
   };
