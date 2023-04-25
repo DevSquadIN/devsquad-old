@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>nxt100</title>
+        <title>DevSquad</title>
       </Head>
       <div className={`h-full px-4 sm:px-6`}>
         <Navbar landing />

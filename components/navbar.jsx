@@ -16,7 +16,7 @@ const Navbar = ({ home, landing }) => {
         href="/lessons"
         className="font-serif font-bold tracking-wider text-gray-900"
       >
-        nxt100
+        DevSquad
       </Link>
       {/* logout button */}
       <div className="flex items-center gap-3">

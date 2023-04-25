@@ -1,4 +1,4 @@
-# nxt100
+# DevSquad
 
 ## Meta Platform
 
@@ -6,4 +6,4 @@
 
 ## Still developing
 
-nxt100 is still in the primary stages of development. **Watch this section to get the latest updates**
+DevSquad is still in the primary stages of development. **Watch this section to get the latest updates**

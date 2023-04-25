@@ -18,7 +18,7 @@ function LessonsHome({ allLessonsData }) {
     <>
       <Layout home>
         <Head>
-          <title>nxt100</title>
+          <title>DevSquad</title>
         </Head>
         <Lessons allLessonsData={allLessonsData} />
       </Layout>
