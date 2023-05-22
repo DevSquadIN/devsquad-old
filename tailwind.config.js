@@ -9,11 +9,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        serif: [
-          "Marko One",
-          "Averia Serif Libre",
-          ...defaultTheme.fontFamily.serif,
-        ],
+        serif: ["Source Sans Pro", ...defaultTheme.fontFamily.serif],
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },
     },
